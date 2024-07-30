@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+   
+
+    <style>
+        * {
+
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        body {
+
+            background: #000
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slidecontainer {
+            width: 100%;  
+            height: 2000vh;
+        }
+
+        .active-slide {
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #000;
+            opacity: 0.35;
+            z-index: -1;
+
+        }  
+
+        .active-slide img {
+            position: absolute;
+            filter: blur(50px);
+            transform: scale(1.125)
+        }
+
+
+        .slider {
+            position: fixed;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            transform-style: preserve-3d;
+            perspective: 750px;
+            overflow: hidden;
+
+        }
+
+        .slide {
+            position: absolute;
+            width: 400px;
+            height: 500px;
+            overflow: hidden;
+        }
+
+        #slide-1 {
+            position: absolute;
+            top: 50%;
+            left: 70%;
+            transform: translateX(-50%) translateY(-50%) translateZ(-22500px);
+            opacity: 0;
+        }
+
+
+        #slide-2 {
+            position: absolute;
+            top: 50%;
+            left: 30%;
+            transform: translate X(-50%) translateY(-50%) translateZ(-20000px);
+            opacity: 0;
+        }
+
+        #slide-3 {
+            position: absolute;
+            top: 50%;
+            left: 70%;
+            transform: translate X(-50%) translateY(-50%) translateZ(-17500px);
+            opacity: 0;
+        }
+
+        #slide-4 {
+            position: absolute;
+            top: 50%;
+            left: 30%;
+            transform: translate X(-50%) translateY(-50%) translateZ(-15000px);
+            opacity: 0;
+        }
+
+        #slide-5 {
+            position: absolute;
+            top: 50%;
+            left: 70%;
+            transform: translate X(-50%) translateY(-50%) translateZ(-12500px);
+            opacity: 0;
+        }
+
+        #slide-6 {
+            position: absolute;
+            top: 50%;
+            left: 30%;
+            transform: translate X(-50%) translateY(-50%) translateZ(-10000px);
+            opacity: 0;
+        }
+
+        #slide-7 {
+            position: absolute;
+            top: 50%;
+            left: 70%;
+            transform: translate X(-50%) translateY(-50%) translateZ(-7500px);
+            opacity: 0;
+        }
+
+        #slide-8 {
+            position: absolute;
+            top: 50%;
+            left: 30%;
+            transform: translate X(-50%) translateY(-50%) translateZ(-5000px);
+            opacity: 0;
+        }
+
+        #slide-9 {
+            position: absolute;
+            top: 50%;
+            left: 70%;
+            transform: translate X(-50%) translateY(-50%) translateZ(-2500px);
+            opacity: 0;
+        }
+
+        #slide-10 {
+            position: absolute;
+            top: 50%;
+            left: 30%;
+            transform: translate X(-50%) translateY(-50%) translateZ(0px);
+            opacity: 1;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <main>
+
+        <h4 class="text-center py-2 border bottom text-primary  font-weight-bold">GSAP SCROLL TRIGGER</h4>
+
+        <P>https://www.youtube.com/watch?v=aAGypqJd818&t=9s</P>
+
+        <div class="slidecontainer">
+            <div class="active-slide">
+                <img src="https://evolvesv.org/images/evolv/leader-ship/garima_kapoor.jpeg" alt="">
+                <img src="https://evolvesv.org/images/evolv/leader-ship/Abhishek_Shukla.jpg" alt="">
+                <img src="https://evolvesv.org/images/evolv/leader-ship/Amit_Patel.jpg" alt="">
+                <img src="https://evolvesv.org/images/evolv/leader-ship/Arvind_Purushottam.jpg" alt="">
+                <img src="https://evolvesv.org/images/evolv/leader-ship/Asra_Rasheed.jpg" alt="">
+                <img src="https://evolvesv.org/images/evolv/leader-ship/Chandar_Pattabhiram.jpg" alt="">
+                <img src="https://evolvesv.org/images/evolv/leader-ship/Ethan_Salmeron.jpg" alt="">
+                <img src="https://evolvesv.org/images/evolv/leader-ship/GaryGauba.jpg" alt="">
+                <img src="https://evolvesv.org/images/evolv/leader-ship/KaiSidhant.jpeg" alt="">
+                <img src="https://evolvesv.org/images/evolv/leader-ship/Neal_Mohan.jpg" alt="">
+
+            </div>
+
+            <div class="slider">
+
+                <div class="slide" id="slide-1">
+                    <div class="slide-copy">
+                        <p>Neo Elegance</p>
+                        <p id="index"> (ES 9342 084F) </p>
+                    </div>
+                    <div class="slide-img">
+                        <img src="https://evolvesv.org/images/evolv/leader-ship/Abhishek_Shukla.jpg" alt="">
+                    </div>
+                </div>
+
+                <div class="slide" id="slide-2">
+                    <div class="slide-copy">
+                        <p>Neo Elegance</p>
+                        <p id="index"> (ES 9342 084F) </p>
+                    </div>
+                    <div class="slide-img">
+                        <img src="https://evolvesv.org/images/evolv/leader-ship/Amit_Patel.jpg" alt="">
+                    </div>
+                </div>
+
+                <div class="slide" id="slide-3">
+                    <div class="slide-copy">
+                        <p>Neo Elegance</p>
+                        <p id="index"> (ES 9342 084F) </p>
+                    </div>
+                    <div class="slide-img">
+                        <img src="https://evolvesv.org/images/evolv/leader-ship/Arvind_Purushottam.jpg" alt="">
+                    </div>
+                </div>
+
+                <div class="slide" id="slide-4">
+                    <div class="slide-copy">
+                        <p>Neo Elegance</p>
+                        <p id="index"> (ES 9342 084F) </p>
+                    </div>
+                    <div class="slide-img">
+                        <img src="https://evolvesv.org/images/evolv/leader-ship/Asra_Rasheed.jpg" alt="">
+                    </div>
+                </div>
+
+                <div class="slide" id="slide-5">
+                    <div class="slide-copy">
+                        <p>Neo Elegance</p>
+                        <p id="index"> (ES 9342 084F) </p>
+                    </div>
+                    <div class="slide-img">
+                        <img src="https://evolvesv.org/images/evolv/leader-ship/Chandar_Pattabhiram.jpg" alt="">
+                    </div>
+                </div>
+
+                <div class="slide" id="slide-6">
+                    <div class="slide-copy">
+                        <p>Neo Elegance</p>
+                        <p id="index"> (ES 9342 084F) </p>
+                    </div>
+                    <div class="slide-img">
+                        <img src="https://evolvesv.org/images/evolv/leader-ship/Ethan_Salmeron.jpg" alt="">
+                    </div>
+                </div>
+
+                <div class="slide" id="slide-7">
+                    <div class="slide-copy">
+                        <p>Neo Elegance</p>
+                        <p id="index"> (ES 9342 084F) </p>
+                    </div>
+                    <div class="slide-img">
+                        <img src="https://evolvesv.org/images/evolv/leader-ship/garima_kapoor.jpg" alt="">
+                    </div>
+                </div>
+
+                <div class="slide" id="slide-8">
+                    <div class="slide-copy">
+                        <p>Neo Elegance</p>
+                        <p id="index"> (ES 9342 084F) </p>
+                    </div>
+                    <div class="slide-img">
+                        <img src="https://evolvesv.org/images/evolv/leader-ship/GaryGauba.jpg" alt="">
+                    </div>
+                </div>
+
+                <div class="slide" id="slide-9">
+                    <div class="slide-copy">
+                        <p>Neo Elegance</p>
+                        <p id="index"> (ES 9342 084F) </p>
+                    </div>
+                    <div class="slide-img">
+                        <img src="https://evolvesv.org/images/evolv/leader-ship/KaiSidhant.jpeg" alt="">
+                    </div>
+                </div>
+
+                <div class="slide" id="slide-10">
+                    <div class="slide-copy">
+                        <p>Neo Elegance</p>
+                        <p id="index"> (ES 9342 084F) </p>
+                    </div>
+                    <div class="slide-img">
+                        <img src="https://evolvesv.org/images/evolv/leader-ship/Neal_Mohan.jpg" alt="">
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+
+
+
+    </main>
+
+
+    <script
+  src="https://code.jquery.com/jquery-3.7.1.js"
+  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+  crossorigin="anonymous"></script>
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+        integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+        integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+</body>
+
+
+<script>
+   gsap.registerPlugin(ScrollTrigger);
+
+window.addEventListener("load", function () {
+    const slides = gsap.utils.toArray(".slide");
+    const activeSlideImages = gsap.utils.toArray(".active-slide img");
+
+    function getInitialTranslateZ(slide) {
+        const style = window.getComputedStyle(slide);
+        const matrix = style.transform.match(/matrix3d\((.+)\)/);
+        if (matrix) {
+            const values = matrix[1].split(",");
+            return parseFloat(values[14] || 0);
+        }
+        return 0;
+    }
+
+    function mapRange(value, inMin, inMax, outMin, outMax) {
+        return ((value - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
+    }
+
+    slides.forEach((slide, index) => {
+        const initialZ = getInitialTranslateZ(slide);
+
+        ScrollTrigger.create({
+            trigger: ".slide-container",
+            start: "top top",
+            end: "bottom bottom",
+            scrub: true,
+            onUpdate: (self) => {
+                const progress = self.progress;
+                const zIncrement = progress * 22500;
+                const currentZ = initialZ + zIncrement;
+
+                let opacity;
+                if (currentZ > -2500) {
+                    opacity = mapRange(currentZ, -2500, 0, 0.5, 1);
+                } else {
+                    opacity = mapRange(currentZ, -5000, -2500, 0, 0.5); // Adjusted to -5000 from -500
+                }
+
+                slide.style.opacity = opacity;
+                slide.style.transform = `translateX(-50%) translateY(-50%) translateZ(${currentZ}px)`; // Corrected 'tgransform' to 'transform'
+
+                if (currentZ < 100) {
+                    gsap.to(activeSlideImages[index], { opacity: 1, duration: 1.5, ease: "power3.out" });
+                } else {
+                    gsap.to(activeSlideImages[index], { opacity: 0, duration: 1.5, ease: "power3.out" });
+                }
+            }
+        });
+    });
+});
+
+</script>
+
+</html>
