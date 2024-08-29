@@ -34,8 +34,15 @@
 
         }
 
+        .text{
+
+            height:100vh;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+        }
+
         h1 span {
-            display: block;
             transform: all 0.2s linar;
         }
 
@@ -44,9 +51,23 @@
             transform: all 0.2s linar;
         }
 
+
+        .image-group{
+           position: absolute;
+           top:10%;
+           left: 0;
+           margin:0 auto;
+           padding: 0 100px;
+           z-index: -1;
+
+        }
         img {
             border: red solid 3px;
+            opacity: 0.5;
+           
         }
+
+
     </style>
 
 
@@ -65,9 +86,9 @@
     </div>
     <div class="text">
         <h1>
-            <span> Hi I am Srinivas </span>
-            <span> Front END UI DEVLOPER</span>
-            <span> & UI/UX DESIGNER</span>
+            <span>  GSAP ScrollSmoother </span>
+            <span> Scroll Smoother</span>
+            <span class="animation"> animation</span>
 
         </h1>
     </div>
@@ -79,15 +100,86 @@
 
 
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
-    integrity="sha512-JobWAqYk5CSjWuVV3mxgS+MmccJqkrBaDhk8SKS1BW+71dJ9gzascwzW85UwGhxiSyR7Pxhu50k+Nl3+o5I49A=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lettering.js/0.7.0/jquery.lettering.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 
 <script>
     $(document).ready(function () {
         $(".text h1 span").lettering();
+
+        const tl =gsap.timeline()
+
+       tl.from(".text h1 span",
+            {
+            x:-20,
+            duration:1,
+            opacity:0,
+            ease:"linear",
+            stagger:0.1,
+            })
+
+        .from(".image-inner img",
+            {
+            x:1100,
+            duration:1,
+            opacity:0,
+            stagger:.14
+            })
+
+        .to(".image-inner img",{
+            x:1100,
+            margin:'0 -140px 0',
+            duration:1,
+            opacity:1,
+            rotate:15,
+            stagger:.14
+             },'-=1.4')
+
+        
+        setTimeout( function(){
+                $(".animation").mousemove(function() {
+                    gsap.to(".image-inner img",
+                    {
+                    x:100,
+                    duration:1,
+                    opacity:1,
+                    stagger:.14,
+                    rotate:0,
+                    margin:'0 0px 0',
+                    })
+
+
+                })
+            })
+
+            setTimeout( function(){
+                $(".animation").mouseover(function() {
+                    gsap.to(".image-inner img",
+                    {
+                    x:100,
+                    duration:1,
+                    opacity:1,
+                    stagger:.14,
+                    rotate:0,
+                    margin:'0 10px 0',
+                    })
+
+                })
+
+                $(".animation").mouseout(function() {
+                    gsap.to(".image-inner img",
+                    {
+                    x:1100,
+                    margin:'0 -140px 0',
+                    duration:1,
+                    opacity:1,
+                    rotate:15,
+                    stagger:.14
+                    })
+              })
+            }, 5000)
+        
 
     })
 
