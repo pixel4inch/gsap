@@ -1,0 +1,46 @@
+* {
+    margin: 0px;
+    padding: 0;
+    box-sizing: border-box;
+    background: #ccc;
+
+}
+
+
+
+.div1,
+.div2 {
+    height: 100vh;
+    width: 100%;
+}
+
+.div1 {
+    background-color: bisque;
+}
+
+.div2 {
+    background-color: blueviolet;
+    padding-top: 60px;
+
+}
+
+.cube {
+    width: 150px;
+    height: 150px;
+    background-color: aquamarine;
+    border: #000 solid 1px;
+
+}
+
+.cube2 {
+    margin-top: 400px;
+    width: 150px;
+    height: 150px;
+    background-color: rgb(202, 234, 22);
+    border: #000 solid 1px;
+
+}
+
+.red {
+    background-color: red;
+}
