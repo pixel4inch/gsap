@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Centered Scroll Fade In/Out</title>
+
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+  <style>
+    html,
+    body {
+      height: 200vh;
+      /* extra height so scrolling works */
+      margin: 0;
+      background: #000;
+      color: #fff;
+      font-family: system-ui, sans-serif;
+    }
+
+    /* Center the text and keep it fixed */
+    .text-wrap {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      max-width: 800px;
+      line-height: 1.5;
+      font-size: clamp(1.2rem, 2.5vw + 1rem, 2.2rem);
+      opacity: 0.9;
+    }
+
+    .char {
+      display: inline-block;
+      opacity: 0;
+      /* start hidden */
+      will-change: opacity, transform;
+    }
+
+    .space {
+      width: 0.35em;
+    }
+
+    section {
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
+</head>
+
+<body>
+  <section style="background:red">
+
+
+  </section>
+
+  <section>
+    <div class="text-wrap">
+      <p class="text">
+        This text stays fixed in the center.<br>
+        Scroll down and watch me fade in,<br>
+        character by character.<br>
+        Scroll back up to fade out again.
+      </p>
+    </div>
+  </section>
+
+  <section style="background:blue">
+  </section>
+
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Helper to wrap characters in spans
+    const escapeHTML = s => s.replace(/[&<>"']/g, m => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[m]));
+
+    function wrapChars(selector) {
+      const el = document.querySelector(selector);
+      const text = el.innerText;
+      const parts = [];
+
+      for (const ch of text) {
+        if (ch === '\n') { parts.push('<br>'); continue; }
+        if (ch === ' ') { parts.push('<span class="char space">&nbsp;</span>'); continue; }
+        parts.push(`<span class="char">${escapeHTML(ch)}</span>`);
+      }
+
+      el.innerHTML = parts.join('');
+      return el.querySelectorAll('.char');
+    }
+
+    const chars = wrapChars('.text');
+
+    gsap.set(chars, { opacity: 0, y: 10 });
+
+    gsap.to(chars, {
+      opacity: 1,
+      y: 0,
+      ease: "none",
+      stagger: { each: 0.03 },
+      scrollTrigger: {
+        trigger: 'body',
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: true,
+        // markers: true // debug
+      }
+    });
+  </script>
+</body>
+
+</html>

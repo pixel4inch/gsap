@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+  <title>Hero Page</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+     font-family: "Playfair Display", serif;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+
+    nav {
+      width: 100%;
+      padding: 14px 40px;
+      background: black;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position:relative;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      margin-top:-62px;
+    }
+
+    /* Logo */
+    .logo {
+    font-size: 1.5rem;
+    font-weight: 100;
+    letter-spacing: 7px;
+}
+
+    /* Menu */
+    .menu {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    .menu li {
+      display: inline-block;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: white;
+      font-weight: 400;
+      transition: color 0.3s ease;
+      letter-spacing: 1px;
+    }
+
+    .menu a:hover {
+      color: #ffcc00; /* Fashion accent color */
+    }
+
+    /* Hero Section */
+    .hero {
+      display: flex;
+      height: calc(100vh - 50px);
+      position: relative;
+    }
+
+    .column {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .column .overlayer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background: #000;
+      opacity: 1;
+      z-index: 99;
+    }
+
+    .column h1 {
+      font-size: 4rem;
+      z-index: 2;
+    }
+
+    .column h3 {
+      font-size: 1.5rem;
+      letter-spacing: 3px;
+      margin-top: 10px;
+      z-index: 2;
+    }
+
+    .btn {
+      margin-top: 20px;
+      padding: 12px 30px;
+      border: 2px solid white;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+     
+      z-index: 2;
+      transition: all 0.3s ease;
+     opacity: 0;
+  
+    }
+
+    
+
+    /* Button Hover Effect */
+    .btn:hover {
+      background: white;
+      color: black;
+      transition: all 0.3s ease;
+      opacity:0;
+    }
+
+    /* Show Button on Hover */
+    .column:hover .btn {
+       opacity: 1;
+       transition: all 0.3s ease;
+    }
+
+    /* Example Backgrounds */
+    .men {
+      background-image: url("01.jpg");
+      background-size: cover;
+      background-position: 0px -23px;
+    background-repeat: no-repeat;
+    }
+
+    .women {
+      background-image: url("02.jpg");
+      background-size: cover;
+      background-position: 0px -140px;
+    background-repeat: no-repeat;
+    }
+
+    .info{
+
+      height: 30%;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="nav">
+    <div class="logo">GIVENCHY</div>
+    <ul class="menu">
+      <li><a href="#">Men</a></li>
+      <li><a href="#">Women</a></li>
+      <li><a href="#">Accessories</a></li>
+      <li><a href="#">Sale</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <!-- Men Column -->
+    <div class="column men">
+      <div class="overlayer"></div>
+
+       
+       <div class="info">
+        <h1>MEN</h1>
+        <h3>FASHION</h3>
+       </div>
+
+        <button class="btn">SHOP NOW</button>
+      
+     
+    </div>
+
+    <!-- Women Column -->
+    <div class="column women">
+      <div class="overlayer"></div>
+
+     
+      <div class="info">
+        <h1>WOMEN</h1>
+        <h3>FASHION</h3>
+       </div>
+
+        <button class="btn">SHOP NOW</button>
+
+       
+      
+    </div>
+  </section>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+
+
+<script>
+
+  document.addEventListener("DOMContentLoaded", () => {
+  gsap.registerPlugin(SplitText);
+
+  const headingText = document.querySelectorAll(".info h1");
+  const taglineText = document.querySelectorAll(".info h3");
+  const LogText = document.querySelectorAll(".logo");
+
+  const headerSplit = new SplitText(headingText, { type: "chars" });
+  const taglineSplit = new SplitText(taglineText, { type: "chars" });
+  const logoSplit = new SplitText(LogText, { type: "chars" });
+
+  const tl_img = gsap.timeline({ ease: "power4.inOut" });
+
+  tl_img
+    .to(".men .overlayer", {
+      y: "100%",
+      duration: 0.5,
+      ease: "power4.out",
+    })
+    .to(".women .overlayer", {
+      y: "100%",
+      duration: 0.5,
+      ease: "power4.out",
+    }, "+=0.2")
+    .from(headerSplit.chars, {
+      opacity: 0,
+      y: 50,
+      stagger: { each: 0.025, from: "center", ease: "power4.out" },
+    })
+    .from(taglineSplit.chars, {
+      opacity: 0,
+      y: 50,
+      stagger: { each: 0.025, from: "center", ease: "power4.out" },
+    }, "-=0.3")
+    .to(".hero", { y: 52, duration: 0.5 })
+    .to(".nav", { y: 52, duration: 0.5 })
+    .from(logoSplit.chars, {
+      y: -70,
+      duration: 0.5,
+      stagger: { each: 0.025, from: "start", ease: "power4.out" },
+    })
+    .from(".menu li", {
+      y: -70,
+      duration: 0.5,
+      stagger: { each: 0.025, from: "start", ease: "power4.out" },
+    });
+    // Removed .to(".btn") here
+});
+
+ 
+
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hover Effects</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <section class="team">
+
+        <div class="profile-images">
+            <div class="img"> <img src="./images/01.jpeg" /> </div>
+            <div class="img"> <img src="./images/02.jpeg" /> </div>
+            <div class="img"> <img src="./images/03.jpeg" /> </div>
+            <div class="img"> <img src="./images/04.jpeg" /> </div>
+            <div class="img"> <img src="./images/05.jpeg" /> </div>
+            <div class="img"> <img src="./images/06.jpeg" /> </div>
+            <div class="img"> <img src="./images/07.jpeg" /> </div>
+            <div class="img"> <img src="./images/08.jpeg" /> </div>
+            <div class="img"> <img src="./images/09.jpeg" /> </div>
+            <div class="img"> <img src="./images/10.jpeg" /> </div>
+        </div>
+
+        <div class="profile-names">
+            <div class="name default ">
+                <h1>GSAP HOVER</h1>
+            </div>
+            <div class="name ">
+                <h1> John Doe</h1>
+            </div>
+            <div class="name">
+                <h1>Jane Smith</h1>
+            </div>
+            <div class="name">
+                <h1>Michael Johnson</h1>
+            </div>
+            <div class="name">
+                <h1>Emily Davis</h1>
+            </div>
+            <div class="name">
+                <h1>William Brown</h1>
+            </div>
+            <div class="name">
+                <h1>Olivia Wilson</h1>
+            </div>
+            <div class="name">
+                <h1>James Taylor</h1>
+            </div>
+            <div class="name">
+                <h1>Sophia Anderson</h1>
+            </div>
+            <div class="name">
+                <h1>Benjamin Thomas</h1>
+            </div>
+            <div class="name">
+                <h1>Ava Martinez</h1>
+            </div>
+
+        </div>
+
+    </section>
+
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+<script src="gsapScript.js"></script>
+
+<!---https://www.youtube.com/watch?v=yCYbH0K5Dh0--->
+
+<script>
+   gsap.registerPlugin(SplitText);
+
+document.addEventListener("DOMContentLoaded", () => {
+    const profileImageContainer = document.querySelector('.profile-images');
+    const profileImages = document.querySelectorAll('.profile-images .img');
+    const nameElements = document.querySelectorAll('.profile-names .name');
+    const nameHeadings = document.querySelectorAll('.profile-names .name h1');
+
+    // Split all headings into chars
+    nameHeadings.forEach((heading) => {
+        const splitText = new SplitText(heading, {
+            type: "chars",
+        });
+
+        splitText.chars.forEach((char) => {
+            char.classList.add('letter'); // ✅ changed to match querySelector
+        });
+    });
+
+    const defaultName = nameElements[0].querySelectorAll('.letter');
+    gsap.set(defaultName, { y: "100%" });
+
+    // checking for window size
+    if (window.innerWidth >= 900) {
+        profileImages.forEach((img, index) => {
+            const corspondingName = nameElements[index + 1]; 
+            if (!corspondingName) return; // ✅ prevent error if undefined
+
+            const letters = corspondingName.querySelectorAll('.letter');
+
+            //
+            img.addEventListener("mouseenter", () => {
+                gsap.to(img, {
+                    width: 140,
+                    height: 140,
+                    duration: 0.5,
+                    ease: "power4.out"
+                });
+
+                gsap.to(letters, {
+                    y: "-100%", // ✅ animate to visible
+                    duration: 0.75, // ✅ fixed typo
+                    ease:"power4.out",
+                    stagger: {
+                        each: 0.025,
+                        from: "center"
+                    }
+                });
+            });
+
+            //
+
+            img.addEventListener("mouseleave", () =>{
+
+                gsap.to(img,{
+
+                    width: 70,
+                    height: 70,
+                    duration: 0.5,
+                    ease: "power4.out"
+
+                })
+                gsap.to(letters,{
+                    y:"100%",
+                    duration:0.75,
+                    ease:"power4.out",
+                    stagger:{
+                        each: 0.025,
+                        from: "center" 
+                    }
+
+                })
+
+
+            })
+
+            //
+
+            profileImageContainer.addEventListener("mouseenter", () =>{
+
+                gsap.to(defaultName,{
+
+                    y:"0%",
+                    duration:0.75,
+                    ease:"power4.out",
+                    stagger:{
+                        each:0.025,
+                        from:"center"
+                    }
+
+                })
+
+            });
+
+             profileImageContainer.addEventListener("mouseleave", () =>{
+
+                gsap.to(defaultName,{
+
+                    y:"100%",
+                    duration:0.75,
+                    ease:"power4.out",
+                    stagger:{
+                        each:0.025,
+                        from:"center"
+                    }
+
+                })
+
+            })
+
+
+
+        });
+    }
+});
+
+
+
+
+
+</script>
+
+</html>
