@@ -47,9 +47,6 @@ section#box1 h1{
 
 
 
-
-
-
 .words {
   transform: translateZ(var(--word));
 }
